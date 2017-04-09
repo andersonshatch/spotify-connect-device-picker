@@ -12,8 +12,7 @@ class SpotifyConnect(spotipy.Spotify):
         return self._put('me/player', payload={'device_ids': [device_id]})
 
 def print_devices(devices, as_menu=True):
-    for iteration in range(0, len(devices)):
-        device = devices[iteration]
+    for iteration, device in enumerate(devices):
         print(f"[{iteration+1}] ", end='') if as_menu else None
         active_indicator = ('* ' if device['is_active'] else '  ') if as_menu else ''
         print(f"{active_indicator}{device['name']}")
